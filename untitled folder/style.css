@@ -1,0 +1,460 @@
+
+:root {
+  --bg: #0b1020;
+  --panel: #131c30;
+  --border: #26344e;
+  --text: #edf2ff;
+  --muted: #94a3bd;
+  --accent: #8175ff;
+  --green: #68dfbd;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 235px;
+  padding: 28px 18px;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.sidebar h2 {
+  color: var(--accent);
+  margin-top: 0;
+}
+
+nav {
+  display: grid;
+  gap: 8px;
+  margin-top: 24px;
+}
+
+nav a {
+  color: var(--muted);
+  text-decoration: none;
+  padding: 12px;
+  border-radius: 10px;
+}
+
+nav a:hover,
+nav a.active {
+  background: #252548;
+  color: white;
+}
+
+.sidebar-bottom {
+  margin-top: auto;
+  padding-top: 40px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+main {
+  width: min(1180px, 100%);
+  padding: 38px;
+  margin: 0 auto;
+}
+
+header,
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+h1 {
+  font-size: clamp(26px, 4vw, 38px);
+  margin: 8px 0;
+}
+
+h2 {
+  margin: 8px 0 14px;
+}
+
+p {
+  line-height: 1.5;
+}
+
+.muted,
+.room-info p,
+.timer-caption {
+  color: var(--muted);
+}
+
+.muted {
+  font-size: 11px;
+  letter-spacing: 1.3px;
+  font-weight: 700;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin: 30px 0;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 22px;
+  min-width: 0;
+}
+
+.panel > span {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.stats h2 {
+  font-size: 25px;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 18px;
+}
+
+.content-grid > .panel {
+  min-width: 0;
+}
+
+.room-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 13px;
+  margin-top: 12px;
+}
+
+.room-icon {
+  display: grid;
+  place-items: center;
+  background: #193f50;
+  color: var(--green);
+  border-radius: 10px;
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  font-size: 21px;
+}
+
+.room-icon.purple {
+  background: #30284f;
+  color: #b7a5ff;
+}
+
+.room-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.room-info h3 {
+  margin: 0 0 5px;
+  font-size: 15px;
+}
+
+.room-info p {
+  margin: 0;
+  font-size: 12px;
+}
+
+button {
+  background: var(--accent);
+  color: white;
+  border: 0;
+  border-radius: 9px;
+  padding: 11px 15px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+button:hover {
+  filter: brightness(1.12);
+}
+
+.secondary {
+  background: #242d43;
+  border: 1px solid #384663;
+}
+
+.tag {
+  background: #252548;
+  color: #c4bcff;
+  padding: 7px 9px;
+  border-radius: 8px;
+  font-size: 10px;
+}
+
+.timer {
+  font-size: clamp(42px, 6vw, 58px);
+  text-align: center;
+  font-weight: 750;
+  letter-spacing: 2px;
+  margin-top: 26px;
+  font-variant-numeric: tabular-nums;
+}
+
+.timer-caption {
+  text-align: center;
+  font-size: 13px;
+}
+
+.timer-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.tasks-panel {
+  grid-column: 1 / -1;
+}
+
+#task-form {
+  display: flex;
+  gap: 10px;
+  margin: 16px 0;
+}
+
+input {
+  background: #0b1222;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  padding: 12px;
+  min-width: 0;
+  flex: 1;
+}
+
+input:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+#task-list {
+  list-style: none;
+  padding: 0;
+}
+
+#task-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  overflow-wrap: anywhere;
+}
+
+#task-list li span {
+  flex: 1;
+}
+
+#task-list li.done span {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+
+#task-list button {
+  padding: 7px 10px;
+}
+
+.notice {
+  margin-top: 14px;
+  padding: 12px;
+  border-radius: 9px;
+  background: #202b45;
+  color: var(--green);
+  font-size: 13px;
+}
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  padding: 28px 0 10px;
+  font-size: 12px;
+}
+
+@media (max-width: 850px) {
+  .sidebar {
+    width: 190px;
+  }
+
+  main {
+    padding: 24px;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tasks-panel {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 560px) {
+  body {
+    display: block;
+  }
+
+  .sidebar {
+    width: 100%;
+    padding: 18px;
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .sidebar-bottom {
+    display: none;
+  }
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+
+  nav a {
+    padding: 8px;
+    font-size: 13px;
+  }
+
+  main {
+    padding: 20px 14px;
+  }
+
+  header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .room-card {
+    flex-wrap: wrap;
+  }
+
+  #task-form {
+    flex-wrap: wrap;
+  }
+}
+
+#room-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+#room-form input {
+  flex: 1;
+  min-width: 140px;
+}
+
+.custom-room {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+  padding: 13px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.custom-room .room-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.custom-room h3 {
+  margin: 0 0 5px;
+  font-size: 15px;
+  overflow-wrap: anywhere;
+}
+
+.custom-room p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+@media (max-width: 480px) {
+  #room-form button {
+    flex: 1;
+  }
+}
+
+/* StudySync - Improved Study Room Cards */
+
+.custom-room {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 18px;
+    margin-top: 14px;
+    border: 1px solid rgba(167, 139, 250, 0.25);
+    border-radius: 16px;
+    background: rgba(139, 92, 246, 0.08);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.custom-room:hover {
+    transform: translateY(-3px);
+    border-color: #a78bfa;
+}
+
+.custom-room h3 {
+    margin: 0 0 8px;
+    color: #f5f3ff;
+}
+
+.custom-room p {
+    margin: 0;
+    color: #b8b2d8;
+    font-size: 13px;
+}
+
+.room-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.custom-room button {
+    border-radius: 10px;
+    padding: 9px 16px;
+    cursor: pointer;
+}
+
+@media (max-width: 500px) {
+    .custom-room {
+        flex-wrap: wrap;
+    }
+}
+

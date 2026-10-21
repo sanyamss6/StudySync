@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudySync — Focus Together</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<section id="backend-status" style="margin: 20px 0; padding: 16px; border-radius: 12px; background: #211a35; color: white;">
+  <h3>StudySync Server</h3>
+  <p id="server-message">Connecting to Java backend...</p>
+  <button id="check-server" type="button">Check Server</button>
+</section>
+
+<body>
+  <aside class="sidebar">
+    <h2>⚡ StudySyncz</h2>
+    <p class="muted">YOUR SPACE TO GROW</p>
+    <nav>
+      <a class="active" href="#dashboard">▦ Dashboard</a>
+      <a href="#rooms">♧ Study Rooms</a>
+      <a href="#tasks">✓ My Tasks</a>
+      <a href="#focus">◷ Focus Timer</a>
+    </nav>
+    <div class="sidebar-bottom">Study smarter. Together.</div>
+  </aside>
+
+  <main id="dashboard">
+    <header>
+      <div>
+        <p class="muted">YOUR PERSONAL WORKSPACE</p>
+        <h1>Let's get focused. ✨</h1>
+        <p>Small steps today. Big results tomorrow.</p>
+      </div>
+      <button id="create-room">+ Create room</button>
+    </header>
+
+    <section class="stats">
+      <article class="panel">
+        <p class="muted">FOCUS TIME TODAY</p>
+        <h2 id="focus-total">0 min</h2>
+        <span>Every minute counts</span>
+      </article>
+      <article class="panel">
+        <p class="muted">TASKS COMPLETED</p>
+        <h2 id="task-total">0 / 0</h2>
+        <span>Keep up the momentum</span>
+      </article>
+      <article class="panel">
+        <p class="muted">CURRENT STREAK</p>
+        <h2>🔥 Start today</h2>
+        <span>Build a consistent habit</span>
+      </article>
+    </section>
+
+    <section class="content-grid">
+      <article class="panel" id="rooms">
+        <div class="section-heading">
+          <div>
+            <p class="muted">STUDY WITH OTHERS</p>
+            <h2>Study rooms</h2>
+          </div>
+          <span class="tag">Live rooms coming soon</span>
+        </div>
+
+        <div class="room-card">
+          <div class="room-icon">⌘</div>
+          <div class="room-info">
+            <h3>Java & DSA</h3>
+            <p>Practice a little every day</p>
+          </div>
+          <button class="secondary join-room" data-room="Java & DSA">
+            Join
+          </button>
+        </div>
+
+        <div class="room-card">
+          <div class="room-icon purple">◈</div>
+          <div class="room-info">
+            <h3>Deep Work Zone</h3>
+            <p>Quiet time for big goals</p>
+          </div>
+          <button class="secondary join-room" data-room="Deep Work Zone">
+            Join
+          </button>
+        </div>
+
+        <form id="room-form" hidden>
+  <input
+    id="room-name"
+    type="text"
+    placeholder="Enter room name"
+    maxlength="50"
+    required
+  >
+  <button type="submit">Create</button>
+  <button type="button" id="cancel-room" class="secondary">
+    Cancel
+  </button>
+</form>
+
+<div id="room-message" class="notice" hidden></div>
+<div id="custom-rooms"></div>
+
+<div class="join-room-panel">
+    <h3>Join a Study Room</h3>
+    <p>Have a room code? Enter it below to join.</p>
+
+    <form id="join-room-form">
+        <input
+            type="text"
+            id="join-room-code"
+            placeholder="Enter room code"
+            maxlength="6"
+            required
+        >
+        <button type="submit">Join Room</button>
+    </form>
+
+    <p id="join-room-message" role="status" aria-live="polite"></p>
+</div>
+
+      </article>
+
+      <article class="panel" id="focus">
+        <p class="muted">YOUR NEXT FOCUS SESSION</p>
+        <h2>Focus timer</h2>
+        <div class="timer" id="timer">25:00</div>
+        <p class="timer-caption" id="timer-status">Ready when you are.</p>
+        <div class="timer-actions">
+        <button id="start-timer">Start focus</button>
+        <button class="secondary" id="reset-timer">Reset</button>
+    <button id="break-mode" class="secondary">Take a 5-min break</button>
+
+        </div>
+      </article>
+
+      <article class="panel tasks-panel" id="tasks">
+        <p class="muted">MAKE TODAY COUNT</p>
+        <h2>Today's tasks</h2>
+        <form id="task-form">
+          <input id="task-input" type="text"
+            placeholder="Add a task, e.g. Solve 2 DSA problems"
+            maxlength="100" required>
+          <button type="submit">Add</button>
+        </form>
+        <ul id="task-list"></ul>
+        <p class="muted" id="empty-tasks">Your next achievement starts here.</p>
+      </article>
+    </section>
+
+    <footer>StudySync · Built for better focus, together.</footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
