@@ -432,17 +432,27 @@ document.addEventListener("DOMContentLoaded", () => {
     const serverMessage = document.getElementById("server-message");
     const checkServerButton = document.getElementById("check-server");
 
-    async function checkStudySyncServer() {
-        if (!serverMessage) return;
+    
+async function checkStudySyncServer() {
+    if (!serverMessage) return;
 
-        serverMessage.textContent = "Connecting...";
+    serverMessage.textContent = "Connecting...";
 
-        try {
-            
-       const response = await fetch(ROOMS_API);
+    try {
+        const response = await fetch(ROOMS_API);
+
         if (!response.ok) {
-                throw new Error("Server returned an error");
-            }
+            throw new Error("HTTP " + response.status);
+        }
+
+        await response.json();
+        serverMessage.textContent = "Java backend connected!";
+    } catch (error) {
+        console.error("StudySync connection error:", error);
+        serverMessage.textContent = "Connection failed: " + error.message;
+    }
+}
+
 
             const data = await response.json();
             serverMessage.textContent =
