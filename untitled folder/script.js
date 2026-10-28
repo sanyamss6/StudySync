@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const timerStatus = document.getElementById("timer-status");
     const startButton = document.getElementById("start-timer");
     const resetButton = document.getElementById("reset-timer");
+    const breakButton = document.getElementById("break-mode");
     const focusTotal = document.getElementById("focus-total");
     const sessionTotal = document.getElementById("session-total");
 
@@ -135,6 +136,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (startButton) {
         startButton.addEventListener("click", startTimer);
+    }    // Take a 5-minute break
+    if (breakButton) {
+        breakButton.addEventListener("click", () => {
+            stopTimer();
+
+            timerMode = "break";
+            remainingSeconds = 5 * 60;
+            renderTimer();
+
+            if (startButton) {
+                startButton.textContent = "Pause";
+            }
+
+            if (timerStatus) {
+                timerStatus.textContent = "Take a 5-minute break!";
+            }
+
+            startTimer();
+        });
     }
 
     if (resetButton) {
@@ -279,7 +299,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const customRooms = document.getElementById("custom-rooms");
     const roomMessage = document.getElementById("room-message");
 
-    const ROOMS_API = "http://localhost:8080/api/rooms";
+    const ROOMS_API = "https://studysyncz-backend.onrender.com/api/rooms";
     let rooms = [];
 
     async function loadRooms() {
