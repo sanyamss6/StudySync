@@ -438,8 +438,9 @@ document.addEventListener("DOMContentLoaded", () => {
         serverMessage.textContent = "Connecting...";
 
         try {
-            const response = await fetch("http://localhost:8080/api/rooms");
-            if (!response.ok) {
+            
+       const response = await fetch(ROOMS_API);
+        if (!response.ok) {
                 throw new Error("Server returned an error");
             }
 
